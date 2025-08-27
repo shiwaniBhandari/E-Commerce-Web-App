@@ -1,0 +1,405 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: black;
+}
+html{
+    font-size: 62.5%;
+}
+
+main{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    max-width: 1500px;
+    width: 95%;
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+
+}
+main .card{
+    max-width: 300px;
+    flex: 1 1 210px;
+    text-align: center;
+    height: 450px;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+main .card .image{
+    height: 50%;
+    margin-bottom: 20px;
+}
+
+main .card .image img{ 
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+main .card .caption{
+    padding-left: 1em;
+    text-align: left;
+    line-height: 3em;
+    height: 25%;
+}
+
+main .card .caption p{
+    font-size: 1.5rem;
+}
+
+del{
+    text-decoration: line-through;
+}
+main .card .caption .rate{
+    display: flex;
+}
+main .card .caption .rate i{
+    color: gold;
+    margin-left: 2px;
+}
+main .card a{
+    width: 50%;
+}
+main .card button{
+    border: 2px solid black;
+    padding: 5px;
+    width: 80%;
+    cursor: pointer;
+    margin-top: 1em;
+    font-weight: bold;
+    position: relative;
+}
+main .card button:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-color: black;
+    transition: all .5s;
+    margin: 0;
+}
+main .card button::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    background-color: black;
+    transition: all .5s;
+
+}
+main .card button:hover::before{
+    width: 30%;
+
+}
+main .card button:hover::after{
+    width: 30%;
+
+}
+
+
+/* search */
+.view {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+  }
+
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .producttr-image-container {
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .producttr-image-container:hover {
+    transform: scale(1.1);
+  }
+
+  .othertr-images {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .othertr-images img {
+    width: 80px;
+    height: 80px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .othertr-images img:hover {
+    transform: scale(1.1);
+  }
+
+  .product-info {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  .product-info p {
+    margin: 10px 0;
+  }
+
+  .rating {
+    color: #FFD700;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .rating span {
+    margin-right: 5px;
+  }
+
+  .rating-stars {
+    color: #ddd;
+    transition: color 0.3s ease;
+  }
+
+  .rating-stars:before {
+    content: "\2606";
+  }
+
+  .rating-stars.active:before,
+  .rating-stars:hover:before {
+    content: "\2605";
+    color: #FFD700;
+  }
+
+  .rating-form {
+    margin-top: 20px;
+  }
+
+  .rating-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .rating-form input[type="number"],
+  .rating-form textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+
+  .reviews {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  .review {
+    margin-bottom: 10px;
+ 
+
+  }
+
+  .review strong {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .review-rating {
+    color: #FFD700;
+    font-weight: bold;
+  }
+
+  .review-date {
+    font-size: 12px;
+    color: #888;
+  }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lightbox.active {
+    display: flex;
+  }
+
+  .lightbox-image {
+    max-width: 80%;
+    max-height: 80%;
+  }
+
+  .blur {
+    filter: blur(5px);
+  }
+
+  .no-scroll {
+    overflow: hidden;
+  }
+
+
+  /* banner */
+
+  .section-m1{
+    margin:40px 0;
+}
+#banner{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background-image:url("https://img.freepik.com/free-photo/vintage-still-life-with-roses-ballet-shoes_155003-637.jpg?w=2000");
+    width:100%;
+    height: 40vh;
+    background-size: cover;
+    background-position:center;
+}
+#banner h3{
+    color:black;
+    font-size:16px;
+}
+#banner h2{
+    color:black;
+    font-size:30px;
+    padding:10px 0;
+}
+#banner h2 span{
+    color:darkorchid;
+}
+#banner button:hover{
+    background-color: #088178;
+    color:#ffff;
+}
+
+/*small banner1*/
+#sm-banner{
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+#sm-banner .banner-box{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:flex-start;
+        text-align:center;
+        background-image:url("https://img.freepik.com/premium-photo/beautiful-young-woman-with-shopping-bags-using-her-smart-phone-yellow-background_50889-43.jpg");
+        min-width:500px;
+        height:50vh;
+        background-size: cover;
+        background-position:center;
+        padding: 30px;
+    }
+#sm-banner .banner-box2{
+        background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmsd24310jCIjXSbzRK9NQRcGIjEAI_YSfB7U3lqE7N9QWTTbhM-73Zi6RHlnhgMwD0QA&usqp=CAU");
+    }
+#sm-banner h4{
+    color:white;
+    font-size: 20px;
+    font-weight:300;
+}
+#sm-banner h2{
+    color:black;
+    font-size: 28px;
+    font-weight:800;
+}
+#sm-banner span{
+    color:black;
+    font-size:14px;
+    font-weight:500;
+    padding-bottom:15px;
+}
+button.white{
+    font-size:13px;
+    font-weight:600;
+    padding:11px 18px;
+    color:white;
+    background-color:transparent;
+    cursor:pointer;
+    border:1px solid white;
+    outline:none;
+    transition:0.2s;
+}
+#sm-banner .banner-box:hover button{
+    background-color:#088178;
+    color:#ffff;
+}
+#banner2{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding:0 80px;
+}
+#banner2 .banner-box{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:flex-start;
+    text-align:center;
+    background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRXb5SbZFcF23dOVrVh0AxvW8FQdWaGRsA3jR_EfiBdUncs7GoiayqT3iBAaXo_Qr8Eb0&usqp=CAU");
+    min-width:30%;
+    height:30vh;
+    background-size: cover;
+    background-position:center;
+    padding:20px;
+    margin-top:20px;
+}
+#banner2 .banner-box2{
+    background-image:url("https://therainydays.co.uk/wp-content/uploads/2017/05/mens-banner-1.jpg");
+}
+#banner2 .banner-box3{
+    background-image:url("https://img.freepik.com/premium-photo/beautiful-young-woman-with-shopping-bags-using-her-smart-phone-yellow-background_50889-43.jpg");
+}
+#banner2 h2{
+    color: white;
+    font-weight: 900;
+    font-size:22px;
+
+}
+#banner2 h3{
+    color: red;
+    font-weight: 800;
+    font-size:15px;
+
+}
