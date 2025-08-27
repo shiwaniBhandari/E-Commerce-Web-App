@@ -1,0 +1,366 @@
+<?php
+//include('./admin_area/connection.php');
+
+// getting products
+function getproducts(){
+    global $conn;
+    if(!isset($_GET['category'])){
+        if(!isset($_GET['brand'])){
+    $sql = "SELECT * FROM  products";
+    $all_products = $conn->query($sql);
+    while($row = mysqli_fetch_assoc($all_products)){
+       $productid =$row['product_id'];
+       $productname =$row['product_name'];
+        $productd =$row['product_D'];
+$productkey =$row['product_key'];
+     $categoryid =$row['category_id'];
+       $brandid =$row['brand_id'];
+        $productimg1 =$row['product_img1'];
+        $productimg2 =$row['product_img2'];
+        $productimg3 =$row['product_img3'];
+      $productprice =$row['product_price'];
+        $productdisc =$row['product_discount'];
+        echo
+        "<div class='card'>
+            <div class='image'>
+                <img src = './admin_area/uploads/$productimg1'>
+            </div>
+           <div class='caption'>
+             <p class='rate'>
+                     <i class='fa-solid fa-star'></i>
+                     <i class='fa-solid fa-star'></i>
+                     <i class='fa-solid fa-star'></i>
+                    <i class='fa-solid fa-star'></i>
+                    <i class='fa-solid fa-star'></i>   
+</p>
+
+<p class='product_name'>$productname</p>
+<p class='price'><b>$ $productprice</b></p>
+<p class='discount'><b><del>$ $productdisc</del></b></p>
+</div>
+<button class='add'><a href = 'shop.php?add_to_cart=$productid'>Add to cart</a></button>
+<a href='viewmore.php?product_id=$productid'</a><button class='view'>view more</button></a>
+</div>";
+  }  
+}
+}
+}
+// getting unique categories
+function get_unique_categories(){
+    global $conn;
+    if(isset($_GET['category'])){
+      $category_id = $_GET['category'];
+    $sql = "SELECT * FROM  products where category_id= $category_id";
+    $all_products = $conn->query($sql);
+    $num_of_rows=mysqli_num_rows($all_products);
+    if($num_of_rows==0){
+        echo "<h2> NO STOCK FOR THIS Category</h2>";
+    }
+    while($row = mysqli_fetch_assoc($all_products)){
+       $productid =$row['product_id'];
+       $productname =$row['product_name'];
+        $productd =$row['product_D'];
+$productkey =$row['product_key'];
+     $categoryid =$row['category_id'];
+       $brandid =$row['brand_id'];
+        $productimg1 =$row['product_img1'];
+        $productimg2 =$row['product_img2'];
+        $productimg3 =$row['product_img3'];
+      $productprice =$row['product_price'];
+        $productdisc =$row['product_discount'];
+        echo
+        "<div class='card'>
+            <div class='image'>
+                <img src = './admin_area/uploads/$productimg1'>
+            </div>
+           <div class='caption'>
+             <p class='rate'>
+                     <i class='fa-solid fa-star'></i>
+                     <i class='fa-solid fa-star'></i>
+                     <i class='fa-solid fa-star'></i>
+                    <i class='fa-solid fa-star'></i>
+                    <i class='fa-solid fa-star'></i>
+</p>
+
+<p class='product_name'>$productname</p>
+<p class='price'><b>$ $productprice</b></p>
+<p class='discount'><b><del>$ $productdisc</del></b></p>
+</div>
+<button class='add'><a href = 'shop.php?add_to_cart=$productid'>Add to cart</a></button>
+<a href='viewmore.php?product_id=$productid'</a><button class='view'>view more</button></a>
+</div>";
+  }  
+}
+}
+// getting search
+function getsearchproducts(){
+    global $conn;
+   if(isset($_GET['submit'])){
+       $user_search = $_GET['query'];
+    $sql = "SELECT * FROM  products where product_key like '%$user_search%'";
+    $all_products = $conn->query($sql);
+    while($row = mysqli_fetch_assoc($all_products)){
+       $productid =$row['product_id'];
+       $productname =$row['product_name'];
+        $productd =$row['product_D'];
+$productkey =$row['product_key'];
+     $categoryid =$row['category_id'];
+       $brandid =$row['brand_id'];
+        $productimg1 =$row['product_img1'];
+        $productimg2 =$row['product_img2'];
+        $productimg3 =$row['product_img3'];
+      $productprice =$row['product_price'];
+        $productdisc =$row['product_discount'];
+        echo
+        "<div class='card'>
+            <div class='image'>
+                <img src = './admin_area/uploads/$productimg1'>
+            </div>
+           <div class='caption'>
+             <p class='rate'>
+                     <i class='fa-solid fa-star'></i>
+                     <i class='fa-solid fa-star'></i>
+                     <i class='fa-solid fa-star'></i>
+                    <i class='fa-solid fa-star'></i>
+                    <i class='fa-solid fa-star'></i>
+</p>
+
+<p class='product_name'>$productname</p>
+<p class='price'><b>$ $productprice</b></p>
+<p class='discount'><b><del>$ $productdisc</del></b></p>
+</div>
+<button class='add'><a href = 'shop.php?add_to_cart=$productid'>Add to cart</a></button>
+<a href='viewmore.php?product_id=$productid'</a><button class='view'>view more</button></a>
+</div>";
+  }  
+}
+}
+
+//getting unique brand
+function get_unique_brand(){
+    global $conn;
+    if(isset($_GET['brand'])){
+      $brand_id = $_GET['brand'];
+    $sql = "SELECT * FROM  products where brand_id= $brand_id";
+    $all_products = $conn->query($sql);
+    $num_of_rows=mysqli_num_rows($all_products);
+    if($num_of_rows==0){
+        echo "<h2> NO STOCK FOR THIS BRAND</h2>";
+    }
+    while($row = mysqli_fetch_assoc($all_products)){
+       $productid =$row['product_id'];
+       $productname =$row['product_name'];
+        $productd =$row['product_D'];
+$productkey =$row['product_key'];
+     $categoryid =$row['category_id'];
+       $brandid =$row['brand_id'];
+        $productimg1 =$row['product_img1'];
+        $productimg2 =$row['product_img2'];
+        $productimg3 =$row['product_img3'];
+      $productprice =$row['product_price'];
+        $productdisc =$row['product_discount'];
+        echo
+        "<div class='card'>
+            <div class='image'>
+                <img src = './admin_area/uploads/$productimg1'>
+            </div>
+           <div class='caption'>
+             <p class='rate'>
+                     <i class='fa-solid fa-star'></i>
+                     <i class='fa-solid fa-star'></i>
+                     <i class='fa-solid fa-star'></i>
+                    <i class='fa-solid fa-star'></i>
+                    <i class='fa-solid fa-star'></i>
+</p>
+
+<p class='product_name'>$productname</p>
+<p class='price'><b>$ $productprice</b></p>
+<p class='discount'><b><del>$ $productdisc</del></b></p>
+</div>
+<button class='add'><a href = 'shop.php?add_to_cart=$productid'>Add to cart</a></button>
+ <a href='viewmore.php?product_id=$productid'</a><button class='view'>view more</button></a>
+</div>";
+  }  
+}
+}
+//getting brands 
+function getbrands(){
+
+    global $conn;
+
+    $sql = "SELECT * FROM brands ORDER BY RAND()";
+    $all_brands = $conn->query($sql);
+     while($row = mysqli_fetch_assoc($all_brands)){
+         $brand_id = $row['brand_id'];
+         $brandname = $row['brand_name'];
+         $brands_img = trim($row['brand_img']);
+         echo
+         "<div class='containe'>
+         <img src='./admin_area/brandsupload/$brands_img' alt='your Image'
+         <h2>$brandname</h2>
+         <button><a href='shop.php?brand=$brand_id'>click me</a></button>
+         </div>";
+     }
+}
+//getting categories
+function getcategories(){
+    global $conn;
+    $sql = "SELECT * FROM category ORDER BY RAND()";
+$all_category =$conn->query($sql);
+          while($row = mysqli_fetch_assoc($all_category)){
+            $categoryid = $row['category_id'];
+            $categoryname = $row['category_name'];
+            $category_img = trim($row['category_img']);
+            echo
+           " <div class='containe'>
+                <img src = './admin_area/uploads/$category_img' alt = 'Your Image'
+                
+                  <h2>$categoryname</h2>
+                  <button><a href='shop.php?category=$categoryid'>click me</a></button>
+                
+              </div>";
+          }
+}
+// get ip address function
+function getIPAddress() {  
+    //whether ip is from the share internet  
+     if(!empty($_SERVER['HTTP_CLIENT_IP'])) {  
+                $ip = $_SERVER['HTTP_CLIENT_IP'];  
+        }  
+    //whether ip is from the proxy  
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {  
+                $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];  
+     }  
+//whether ip is from the remote address  
+    else{  
+             $ip = $_SERVER['REMOTE_ADDR'];  
+     }  
+     return $ip;  
+}  
+//$ip = getIPAddress();
+//echo 'user real IP Address - '.$ip;
+
+
+// cart function 
+function cart(){
+    if(isset($_GET['add_to_cart'])){
+        global $conn;
+        $ip = getIPAddress();
+        $get_product_id = $_GET['add_to_cart'];
+        $select_query = "SELECT * FROM `cart_details` WHERE ip_address='$ip' AND product_id=$get_product_id";
+        $all_items = $conn->query($select_query);
+        $num_of_rows = mysqli_num_rows($all_items);
+        
+        if($num_of_rows > 0){
+            echo "<script>alert('This item is already present inside the cart')</script>";
+            echo "<script>window.open('shop.php','_self')</script>";
+        }else{
+            $insert_query = "INSERT INTO `cart_details` (product_id, ip_address, quantity) VALUES ($get_product_id, '$ip', 1)";
+            if($conn->query($insert_query) == TRUE)
+            
+            echo "<script>alert('Item added to cart')</script>";
+            echo "<script>window.open('shop.php','_self')</script>";
+        }
+    }
+}
+
+
+// cart items
+function cart_item(){
+    if(isset($_GET['add_to_cart'])){
+        global $conn;
+        $ip = getIPAddress();
+     
+        $select_query = "SELECT * FROM `cart_details` WHERE ip_address='$ip' ";
+        $all_items = $conn->query($select_query);
+        $count_cart_items = mysqli_num_rows($all_items);
+        
+      
+        }else{
+            global $conn;
+            $ip = getIPAddress();
+         
+            $select_queryy = "SELECT * FROM `cart_details` WHERE ip_address='$ip' ";
+            $all_items = $conn->query($select_queryy);
+            $count_cart_items = mysqli_num_rows($all_items);
+        }
+        echo $count_cart_items;
+    }
+
+  
+//get user order_details
+function get_user_order_details(){
+  global $conn;
+  $username=$_SESSION['username'];
+  $get_details="Select * from `user_table` where username='$username'";
+  $resultt_query=mysqli_query($conn,$get_details);
+  while($row_query=mysqli_fetch_array($resultt_query)){
+      $user_id=$row_query['user_id'];
+      if(!isset($_GET['edit_account'])){
+          if(!isset($_GET['my_order'])){
+              if(!isset($_GET['delete_account'])){
+                $get_orders="Select * from `user_orders` where user_id=$user_id and
+                 order_status='pending'";
+                 $resultt_orders_query=mysqli_query($conn,$get_orders);
+                 $row_count=mysqli_num_rows($resultt_orders_query);
+                 if($row_count>0){
+                  echo"<div class='user_anchor'><h3 style='color: green;'>You have<span style='color:red;'>$row_count</span>pending orders!</h3><br><br>
+                  <a clas='user_anchor'style='color:black;' href='profile.php?order_details'>Order Details</a></div>";
+                 }else{
+                  echo"<div class='user_anchor'><h3 style='color: green;'>You have<span style='color:red;'>0</span>pending orders!</h3><br><br>
+                  <a style='color:black;' href='../index.php'>Explore Store</a></div>";
+                 }
+              }
+          }  
+      }
+  }
+  
+  
+  
+  }
+//featured product
+
+function getfeproducts(){
+  global $conn;
+  if(!isset($_GET['category'])){
+      if(!isset($_GET['brand'])){
+  $sql = "SELECT * FROM  products ORDER BY RAND() LIMIT 10";
+  $all_products = $conn->query($sql);
+  while($row = mysqli_fetch_assoc($all_products)){
+     $productid =$row['product_id'];
+     $productname =$row['product_name'];
+      $productd =$row['product_D'];
+$productkey =$row['product_key'];
+   $categoryid =$row['category_id'];
+     $brandid =$row['brand_id'];
+      $productimg1 =$row['product_img1'];
+      $productimg2 =$row['product_img2'];
+      $productimg3 =$row['product_img3'];
+    $productprice =$row['product_price'];
+      $productdisc =$row['product_discount'];
+      echo
+      "<div class='card'>
+          <div class='image'>
+              <img src = './admin_area/uploads/$productimg1'>
+          </div>
+         <div class='caption'>
+           <p class='rate'>
+                   <i class='fa-solid fa-star'></i>
+                   <i class='fa-solid fa-star'></i>
+                   <i class='fa-solid fa-star'></i>
+                  <i class='fa-solid fa-star'></i>
+                  <i class='fa-solid fa-star'></i>   
+</p>
+
+<p class='product_name'>$productname</p>
+<p class='price'><b>$ $productprice</b></p>
+<p class='discount'><b><del>$ $productdisc</del></b></p>
+</div>
+<button class='add'><a href = 'index.php?add_to_cart=$productid'>Add to cart</a></button>
+<a href='viewmore.php?product_id=$productid'</a><button class='view'>view more</button></a>
+</div>";
+}  
+}
+}
+}
+?>
